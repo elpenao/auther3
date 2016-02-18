@@ -41,7 +41,7 @@
 				  eat-click></span>
 		</h5>
 	</div>
-	<div ng-show="$root.isMe(user) || $root.isAdmin()" class="media-right media-middle">
+	<div ng-if="$root.isMe(user) || $root.isAdmin()" class="media-right media-middle">
 		<button ng-if="!isForm" class="btn btn-default" ng-click="removeUser()" eat-click>
 			<span class="glyphicon glyphicon-remove"></span>
 		</button>

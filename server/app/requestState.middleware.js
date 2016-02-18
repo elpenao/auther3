@@ -2,22 +2,13 @@
 
 var router = require('express').Router(),
 	session = require('express-session'),
-	passport = require('passport');
+	passport = require('passport'),
+	bodyParser = require('body-parser')
 
 var User = require('../api/users/user.model');
 var secrets = require('../../secrets');
 
-router.use(function (req, res, next) {
-	var bodyString = '';
-	req.on('data', function (chunk) {
-		bodyString += chunk;
-	});
-	req.on('end', function () {
-		bodyString = bodyString || '{}';
-		req.body = eval('(' + bodyString + ')');
-		next();
-	});
-});
+router.use(bodyParser.json());
 
 router.use(session({
 	secret: secrets.session,
