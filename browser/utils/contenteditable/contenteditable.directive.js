@@ -7,7 +7,7 @@ app.directive('contenteditable', function () {
 		link: function (scope, element, attrs, ngModel) {
 			if (!ngModel) return;
 			function read() {
-				ngModel.$setViewValue(element.html());
+				ngModel.$setViewValue(element.text());
 			}
 			ngModel.$render = function () {
 				element.html(ngModel.$viewValue || '');
